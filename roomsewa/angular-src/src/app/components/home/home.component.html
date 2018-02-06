@@ -1,0 +1,12 @@
+<div class="jumbotron text-center">
+    <h1>RoomSewa</h1>
+    <p class="lead">Find the beter place!</p>
+
+    <form (submit)="onFindSubmit()">
+        <div class="form-group">
+          <input type="text" [(ngModel)]="place" name="place" class="form-control" #ptext (keyup)="0">
+        </div>
+      
+        <input type="submit" class="btn btn-primary" value="Search" [routerLink]="['hotelDetail',place]">
+      </form>
+</div>

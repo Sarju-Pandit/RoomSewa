@@ -1,0 +1,52 @@
+
+
+<div  style="width:950px; margin:auto; margin-top:10px;margin-bottom:10px;">
+
+
+   <div class="row wrapper" style=" margin:auto" *ngFor="let hotel of hotels"> 
+      <!-- <div class="row wrapper outer" style="margin:auto"  > -->
+    <div class="column left">
+      <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu" style="height:300px; width:350px"/>
+    </div>
+    <div class="column right">
+      <br>
+      <div class="row">
+        <div class="col-sm-8" >
+          <label><strong>Name: </strong>  </label>
+          <strong>{{hotel.name}}</strong></div>
+        <div class="col-sm-4" >
+          <label><strong>Rating:</strong> </label>
+          <strong> {{hotel.rating}}</strong></div>
+        </div>
+        <div class="row col-sm-12">
+          <!-- <p> Street, City, State, Country</p> -->
+          <label><strong>Address: </strong> </label>
+          <p> {{hotel.address.street}}, {{hotel.address.city}},{{hotel.address.state}},{{hotel.address.country}}</p>
+        </div>
+        <div  class="row col-sm-8">
+            <button class="btn btn-primary"> SHOW ON MAP</button>
+        </div>
+       
+        <div class="row wrapperInner col-sm-12" >
+          <p>
+          {{hotel.description}}
+          </p>
+        </div>
+        <div class="row">
+          <!--to implement later as currently the json is not showing the features -->
+          <div class="col-sm-8 ">TV, Room</div>
+        </div>
+        <br>
+         <div class="row" >
+            <div class="col-sm-8 "></div>
+            <div class="col-sm-4 "><button  class="showRoom btn btn-primary" style="float:right; margin-right:30px"> SHOW ROOM</button></div>
+            
+          </div> 
+      </div>
+      <div> 
+      </div>
+    </div>
+   
+  </div>
+
+

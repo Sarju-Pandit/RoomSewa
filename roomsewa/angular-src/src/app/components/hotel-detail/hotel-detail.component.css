@@ -1,0 +1,72 @@
+
+
+
+  * {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: antiquewhite;
+}
+
+/* Create two unequal columns that floats next to each other */
+.column {
+    float: left;
+    /* padding: 10px; */
+    height: 300px; /* Should be removed. Only for demonstration */
+}
+
+.left {
+  width: 40%;
+}
+
+.right {
+  width: 60%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.wrapper
+{
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  outline: 2px solid rgb(15, 11, 11);
+}
+
+.row.wrapperInner
+{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  outline: 2px solid rgb(15, 11, 11);
+  margin:left;
+  width:60%;
+  
+}
+
+.showRoom
+{
+  /* float:right;
+  margin-left:30px;
+  margin-bottom: 10px; */
+  /* position: absolute;
+  right:0;
+  bottom: 0; 
+  position: absolute;*/
+  margin-left:20px;
+  margin-bottom: 20px;
+  float: right;
+}
+
+.outer
+{
+  margin:auto;
+  margin-top:10px;
+  margin-bottom: 10px;
+}
