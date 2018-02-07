@@ -1,0 +1,22 @@
+
+
+  <table class="table table-hover" >
+    <thead>
+      <tr>
+        <th>Types of Room</th>
+        <th>Rooms Available</th>
+        <th>Capacity</th>
+        <th>Price ($)</th>
+        <th>Confirm</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let room of rooms">
+        <td>{{room.roomType}}</td>
+        <td>{{room.quantity}}</td>
+        <td>{{room.capacity}}</td>
+        <td>{{room.price}}</td>
+        <td><button class="btn btn-primary" [routerLink]="[roomType]">RESERVE</button></td>
+      </tr>
+    </tbody>
+  </table>

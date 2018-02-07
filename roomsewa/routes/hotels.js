@@ -18,6 +18,7 @@ router.post('/add', (req, res, next) => {
         location: req.body.location,
         room: req.body.room
     });
+    console.log(newHotel);
     Hotel.addHotel(newHotel, (err, hotel) => {
         if (err) {
             res.json({ success: false, msg: 'Failed to be added hotel' });
@@ -28,8 +29,8 @@ router.post('/add', (req, res, next) => {
 });
 
 // Route handler for /hotels/place
-router.get('/:place', (req, res, next) => {
-    let place = req.params.place;
+router.post('/city', (req, res, next) => {
+    let place = req.body.place;
     Hotel.getHotelsByAddress(place, (err, hotel) => {
         if (err) {
             res.json({ success: false, msg: 'Oops! No hotel found in this location!' });
@@ -37,6 +38,11 @@ router.get('/:place', (req, res, next) => {
             res.json(hotel);
         }
     });
+});
+
+// Handle default
+router.get('*', (req, res, next) => {
+    res.sendFile(path.join(__dirname, 'client/index.html'));
 });
 
 module.exports = router;

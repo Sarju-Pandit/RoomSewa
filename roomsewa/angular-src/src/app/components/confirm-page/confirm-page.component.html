@@ -1,0 +1,22 @@
+<div class="wholeDiv wrapper">
+
+  <h1>{{hotelName | uppercase}}</h1>
+  <h5> You have got a great room at ${{roomPrice}}</h5>
+
+  <div>
+    <br>
+    <h4 class="reservation-title">RESERVATION TERMS</h4>
+    <p> By clicking "Book", you agree that you have read and accepted our Terms and Conditions. </p>
+    <hr>
+    <div class="row">
+      <div class="column col-sm-8">
+       You are Booking: <strong>{{roomType}} </strong>
+      </div>
+      <div class="column col-sm-4">
+        <button class="btn btn-primary bookBtn" [routerLink]="[roomType,roomPrice]"> CONFIRM </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="btn btn-primary bookBtn" [routerLink]="['']"> BACK </button>

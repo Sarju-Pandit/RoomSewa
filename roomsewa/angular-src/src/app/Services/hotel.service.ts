@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, URLSearchParams, RequestOptions } from '@angular/http';
+import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { tokenNotExpired } from 'angular2-jwt';
 import 'rxjs/add/operator/map';
-import { RequestOptionsArgs } from '@angular/http/src/interfaces';
 
 @Injectable()
 export class HotelService {
@@ -10,13 +9,11 @@ export class HotelService {
 
   constructor(private http: Http) { }
 
-
-
   // Get Profile
   getHotel(place) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:8080/hotels/ktm', {headers: headers})
+    return this.http.post('http://localhost:8080/hotels/city',place, {headers: headers})
       .map(res => res.json());
   }
 }

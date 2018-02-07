@@ -1,0 +1,32 @@
+.left {
+    width: 70%;
+  }
+  
+  .right {
+    width: 30%;
+  }
+  
+  .outer
+  {
+      width:80%;
+      margin:auto;
+      margin-top: 20px;
+  }
+
+  table
+  {
+      width:80%;
+      margin: auto;
+  }
+
+  .bottomText
+  {
+      text-align: center;
+  }
+
+  .leftText
+  {
+      margin: left;
+  }
+
+  

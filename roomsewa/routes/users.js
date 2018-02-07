@@ -43,8 +43,7 @@ const express = require('express'),
                         success: true,
                         token: 'JWT ' +token,
                         user: {
-                            id: user._id,
-                            email: user.email
+                            name: user.username
                         }
                     });
                 }else {

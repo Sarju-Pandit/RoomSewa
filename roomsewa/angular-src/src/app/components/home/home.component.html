@@ -1,12 +1,170 @@
 <div class="jumbotron text-center">
-    <h1>RoomSewa</h1>
-    <p class="lead">Find the beter place!</p>
-
-    <form (submit)="onFindSubmit()">
+  <div class="text">
+      <h1>ROOM-SEWA</h1>
+      <p class="lead"><strong>FIND YOUR HOTEL</strong></p>
+  </div>
+    
+    <br>
+    <!-- <form (submit)="onFindSubmit()">
         <div class="form-group">
-          <input type="text" [(ngModel)]="place" name="place" class="form-control" #ptext (keyup)="0">
+          <input type="text" [(ngModel)]="place" name="place" class="form-control">
         </div>
       
-        <input type="submit" class="btn btn-primary" value="Search" [routerLink]="['hotelDetail',place]">
+        <input type="submit" class="btn btn-primary" value="Search">
+      </form> -->
+
+      <form (submit)="onFindSubmit()">
+        <div class="form-group" class="row">
+          <div class=" form column col-10">
+              <input type="text" [(ngModel)]="place" name="place" placeholder="Please enter your destination" class="form-control">
+          </div>
+          <div class="column col-2">
+              <input type="submit" class="btn btn-primary glyphicon glyphicon-search" value="SEARCH">
+          </div> 
+        </div>
+        <br>
+        <br> 
+        <br>
       </form>
 </div>
+
+
+<!-- <div id="hotelList" *ngIf ="hotels" >
+<div id="" style="width:950px; margin:auto; margin-top:10px;margin-bottom:10px;"  *ngFor = "let hotel of hotels"> 
+    <div class="row wrapper outer" style="margin:auto">
+      <div class="column left">
+        <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu" style="height:300px; width:350px"
+        />
+      </div>
+      <div class="column right">
+        <br>
+        <div class="row">
+          <div class="col-sm-8">
+            <h4>{{hotel.name}}</h4>
+          </div>
+          <div class="col-sm-4">
+            <label>
+              <strong>Rating: {{hotel.rating}}</strong>
+            </label>
+          </div>
+        </div>
+        <div class="row col-sm-12">
+          <span >{{hotel.address.street}}, {{hotel.address.city}}, {{hotel.address.state}}, {{hotel.address.country}}</span>
+        </div>
+        <div class="row col-sm-8">
+          <button class="btn btn-success" (click) = "onClickMap(hotel.location)" >SHOW ON MAP</button>
+        </div>
+  
+        <div class="row wrapperInner col-sm-12">
+          <p>
+            {{hotel.description}}
+          </p>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-sm-8 "></div>
+          <div class="col-sm-4 ">
+            <button class="btn btn-primary" style="float:right; margin-right:30px" (click) = "onShowRoom(hotel.location)"> SHOW ROOM</button>
+          </div>
+          <hr />
+          <div *ngIf = "room">
+              <p>this place is for room details</p>
+          </div>
+        </div>
+      </div>
+      <div>
+      </div>
+    </div>
+  </div>
+  </div>  -->
+
+  <div class="outMost" id="hotelList" *ngIf ="hotels" >
+    <div class="row wrapper" *ngFor="let hotel of hotels">
+      <div class="column-left col-md-4">
+        <img src="http://www.telegraph.co.uk/content/dam/Travel/leadAssets/35/50/nihiwatubed_3550753a-xlarge.jpg" class="responsive-image"
+          alt="hotel">
+      </div>
+  
+      <div class="column-right col-md-8">
+        <br>
+        <div class=" row rowOne">
+          <div class="col-md-8 col-xs-12">
+            <label>
+              <strong>Name: </strong>
+            </label>
+            <strong>{{hotel.name}}</strong>
+          </div>
+          <div class="col-md-4 col-xs-12">
+            <label>
+              <strong>Rating: </strong>
+            </label>
+            <strong>{{hotel.rating}}</strong>
+          </div>
+        </div>
+        <div class="row rowTwo col-xs-12">
+          {{hotel.address.street}}, {{hotel.address.city}},{{hotel.address.state}}, {{hotel.address.country}}
+        </div>
+        <div class="row rowThree col-xs-12">
+            <div class="col-md-8">
+          <!-- <button class=" showMap btn btn-primary"> SHOW ON MAP</button> -->
+          <button class="btn btn-success" (click) = "onClickMap(hotel.location)" >SHOW ON MAP</button>
+          </div>
+          <div class="col-md-4">
+              <!-- <button class="btn btn-primary" (click)="showRoom(hotel.room)"> ROOMS</button> -->
+              <!-- <button class="btn btn-primary" (click) ="onClickShowRoom()"> ROOMS</button> -->
+            </div>
+        </div>
+        <div class="rowFour col-xs-12">
+          {{hotel.description}} 
+        </div>
+        <div class="row rowFive col-xs-12">
+        <div class=" features col-md-8">
+          
+        </div>
+        
+        </div>
+      </div>
+  
+      <!-- Table-->
+            <!--Div for room details -->
+                 <div> 
+                <hr>
+                <!-- <table class="table table-hover roomDetails" *ngIf="rooms.length!=0"> -->
+                    <table class="table table-hover roomDetails" *ngIf="hotel.room.length!=0">
+                  <thead>
+                    <tr>
+                      
+                      <th>Types of Room</th>
+                      <th>Rooms Available</th>
+                      <!-- <th>Capacity</th> -->
+                      <th>Price ($)</th>
+                      <th>Confirm</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let rm of hotel.room">
+                      <td>{{rm.roomType}}</td>
+                      <td>{{rm.quantity}}</td>
+                      <!-- <td>{{rm.capacity}}</td> -->
+                      <td>{{rm.price}}</td>
+                      <td>
+                        <!-- <button class="btn btn-primary" [routerLink]="[rm.roomType,hotel.name]">RESERVE</button> -->
+                        <button class="btn btn-primary" [routerLink]="[rm.roomType,rm.price,hotel.name]">RESERVE</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div *ngIf="hotel.room.length==0">
+                    <span id="noRoom">ROOMS NOT AVAILABLE CURRENTLY</span>  
+                  </div> 
+              </div>
+        
+        
+    </div>
+  
+  
+  
+  
+   
+  
+  </div>

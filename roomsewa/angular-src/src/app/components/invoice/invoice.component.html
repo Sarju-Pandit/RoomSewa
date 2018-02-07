@@ -1,0 +1,73 @@
+<div class="outer">
+    <div class="row">
+        <div class="col-sm-7">
+            <p>
+                    Room-Sewa.com
+            </p>
+            <p>
+                Kathmandu, Nepal
+            </p>
+            <p>
+                Phone [9860 569842]
+            </p>
+        </div>
+        <div class="col-sm-5">
+            <p>
+                    <!-- INVOICE NO: 1234 -->
+                    INVOICE NO: {{random}}
+            </p>
+          <p>
+                Date:  {{date | date:'yyyy-MM-dd'}}
+          </p>
+           
+        </div>
+    </div>
+</div>
+<br>
+<table class="table">
+        <thead>
+          <tr>
+            <th scope="col">QTY</th>
+            <th scope="col">DESCRIPTION</th>
+            <th scope="col">UNIT PRICE ($)</th>
+            <th scope="col">AMOUNT ($)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>1</th>
+            <td>{{roomType}}</td>
+            <td>{{roomPrice}}</td>
+            <td>{{roomPrice}}</td>
+          </tr>
+        </tbody>
+      </table>
+<br>
+
+      <div class="row bottomText">
+            <div class="col-sm-7 leftText">
+                <p>
+                       <strong>Make All Payment To The Hotel</strong> 
+                </p>
+                <p class="leftText">
+                   <strong>Thank You</strong>
+                </p>
+            </div>
+            <div class="col-sm-5">
+                <p>
+                        SubTotal: ${{roomPrice}}
+                </p>
+              <p>
+                    Sales Tax: {{salesTax}}
+              </p>
+              <p>
+                    Total Due: {{totalPrice}}
+              </p>
+              <br>
+              <!-- <div class="row"> -->
+                    <button class="btn btn-primary" ng-click="export()">Print </button>
+                <!-- </div> -->
+            </div>
+        </div>
+
+        

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import {FlashMessagesModule} from 'angular2-flash-messages';
-import {Http, HttpModule} from '@angular/http';
+import {HttpModule} from '@angular/http';
 import { HttpClientModule } from '@angular/common/http'
 import {MaterialModule} from './shared/material.module';
 
@@ -22,14 +22,31 @@ import {HotelService} from './Services/hotel.service';
 import { AuthGuard } from './guards/auth.guard';
 import { FlashMessagesService } from 'angular2-flash-messages/module/flash-messages.service';
 import { HotelComponent } from './components/hotel/hotel.component';
-import { HotelDetailComponent } from './components/hotel-detail/hotel-detail.component';
+import { HotelDetailsComponent } from './components/hotel-details/hotel-details.component';
+
+import { ApplicationRef } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { AgmCoreModule } from '@agm/core';
+import { GeolocationComponent } from './components/geolocation/geolocation.component';
+import { Http } from '@angular/http/src/http';
+import { RoomDetailsComponent } from './components/room-details/room-details.component';
+import { ConfirmPageComponent } from './components/confirm-page/confirm-page.component';
+import { InvoiceComponent } from './components/invoice/invoice.component';
 
 const appRoute: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'authenticate', component: LoginComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: 'hotelDetail/:place', component: HotelDetailComponent }
+  { path: 'geolocation/:lat/:lon', component: HotelComponent },
+  
+ // { path: 'hotelDetail/:place', component: HotelDetailsComponent },
+  //since, we showed in the same page, this url is not needed
+  //{ path: 'hotelDetail/:place/:hotel._id', component: RoomDetailsComponent },
+  { path: 'home/:roomType/:roomPrice/:hotelName', component: ConfirmPageComponent },
+  { path: 'home/:roomType/:roomPrice/:hotelName/:roomType/:roomPrice', component: InvoiceComponent },
+  { path: '**', component: HomeComponent }
 ];
 
 @NgModule({
@@ -41,7 +58,11 @@ const appRoute: Routes = [
     RegisterComponent,
     ProfileComponent,
     HotelComponent,
-    HotelDetailComponent
+    HotelDetailsComponent,
+    GeolocationComponent,
+    RoomDetailsComponent,
+    ConfirmPageComponent,
+    InvoiceComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +71,11 @@ const appRoute: Routes = [
     FlashMessagesModule,
     HttpModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    CommonModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyC0fBZVHcDpPM620wwOLNttkrf2BN0wtFg'
+    })
   ],
   providers: [ValidateService, FlashMessagesService, AuthService, AuthGuard, HotelService],
   bootstrap: [AppComponent]

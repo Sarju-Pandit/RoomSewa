@@ -48,13 +48,13 @@ app.use('/hotels', hotels);
 
 // Index Route
 app.get('/', (req, res) => {
-    res.send('Invalid Endpoint');
-});
-
-// Handle request for every route
-app.get('*', (req, res, next) => {
     res.sendFile(path.join(__dirname, 'client/index.html'));
 });
+
+// // Handle request for every route
+// app.get('*', (req, res, next) => {
+//     res.sendFile(path.join(__dirname, 'client/index.html'));
+// });
 
 // Start Server
 app.listen(PORT, () => { console.log('Server is running on ' + PORT); });
