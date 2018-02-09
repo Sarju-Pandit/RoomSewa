@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HotelService } from '../../Services/hotel.service';
 import { UpperCasePipe } from '@angular/common';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-confirm-page',
@@ -17,7 +18,9 @@ export class ConfirmPageComponent implements OnInit {
 
 
  // confirmationOfHotel: any[];
-  constructor( private route: ActivatedRoute, private hotelService:HotelService) { 
+  constructor( private route: ActivatedRoute, 
+    private hotelService:HotelService, 
+    private location: Location) { 
   }
 
   ngOnInit() {
@@ -28,10 +31,9 @@ export class ConfirmPageComponent implements OnInit {
     console.log('p',this.route.snapshot.params);
      this.hotelName=this.route.snapshot.params['hotelName'];
     console.log('hotelName',this.hotelName);
- 
- 
-
 }
 
-
+onBackClick(){
+  this.location.back();
+}
 }

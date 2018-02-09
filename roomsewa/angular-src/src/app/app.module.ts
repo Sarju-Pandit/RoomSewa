@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import {FlashMessagesModule} from 'angular2-flash-messages';
 import {HttpModule} from '@angular/http';
 import { HttpClientModule } from '@angular/common/http'
-import {MaterialModule} from './shared/material.module';
+
 
 
 import { AppComponent } from './app.component';
@@ -32,6 +32,8 @@ import { Http } from '@angular/http/src/http';
 import { RoomDetailsComponent } from './components/room-details/room-details.component';
 import { ConfirmPageComponent } from './components/confirm-page/confirm-page.component';
 import { InvoiceComponent } from './components/invoice/invoice.component';
+import { CanReserveGuard } from './guards/can-reserve.guard';
+import { ConfirmGuardGuard } from './guards/confirm-guard.guard';
 
 const appRoute: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -40,13 +42,10 @@ const appRoute: Routes = [
   { path: 'authenticate', component: LoginComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'geolocation/:lat/:lon', component: HotelComponent },
-  
- // { path: 'hotelDetail/:place', component: HotelDetailsComponent },
-  //since, we showed in the same page, this url is not needed
-  //{ path: 'hotelDetail/:place/:hotel._id', component: RoomDetailsComponent },
-  { path: 'home/:roomType/:roomPrice/:hotelName', component: ConfirmPageComponent },
-  { path: 'home/:roomType/:roomPrice/:hotelName/:roomType/:roomPrice', component: InvoiceComponent },
-  { path: '**', component: HomeComponent }
+  { path: 'home/:roomType/:roomPrice/:hotelName', component: ConfirmPageComponent, canActivate: [CanReserveGuard] },
+  { path: 'home/:roomType/:roomPrice/:hotelName/:roomType/:roomPrice', component: InvoiceComponent, canActivate: [ConfirmGuardGuard] },
+  //  { path: '**', component: HomeComponent },
+  { path: '**', redirectTo: 'home' }
 ];
 
 @NgModule({
@@ -71,13 +70,12 @@ const appRoute: Routes = [
     FlashMessagesModule,
     HttpModule,
     HttpClientModule,
-    MaterialModule,
     CommonModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyC0fBZVHcDpPM620wwOLNttkrf2BN0wtFg'
     })
   ],
-  providers: [ValidateService, FlashMessagesService, AuthService, AuthGuard, HotelService],
+  providers: [ValidateService, FlashMessagesService, AuthService, AuthGuard, HotelService, CanReserveGuard, ConfirmGuardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -58,14 +58,14 @@
                         SubTotal: ${{roomPrice}}
                 </p>
               <p>
-                    Sales Tax: {{salesTax}}
+                    Sales Tax: $ {{salesTax}}
               </p>
               <p>
-                    Total Due: {{totalPrice}}
+                    Total Due: $ {{totalPrice}}
               </p>
               <br>
               <!-- <div class="row"> -->
-                    <button class="btn btn-primary" ng-click="export()">Print </button>
+                    <button class="btn btn-primary" ng-click="export()" (click)="print()">Print </button>
                 <!-- </div> -->
             </div>
         </div>

@@ -5,14 +5,6 @@
   </div>
     
     <br>
-    <!-- <form (submit)="onFindSubmit()">
-        <div class="form-group">
-          <input type="text" [(ngModel)]="place" name="place" class="form-control">
-        </div>
-      
-        <input type="submit" class="btn btn-primary" value="Search">
-      </form> -->
-
       <form (submit)="onFindSubmit()">
         <div class="form-group" class="row">
           <div class=" form column col-10">
@@ -29,54 +21,7 @@
 </div>
 
 
-<!-- <div id="hotelList" *ngIf ="hotels" >
-<div id="" style="width:950px; margin:auto; margin-top:10px;margin-bottom:10px;"  *ngFor = "let hotel of hotels"> 
-    <div class="row wrapper outer" style="margin:auto">
-      <div class="column left">
-        <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu" style="height:300px; width:350px"
-        />
-      </div>
-      <div class="column right">
-        <br>
-        <div class="row">
-          <div class="col-sm-8">
-            <h4>{{hotel.name}}</h4>
-          </div>
-          <div class="col-sm-4">
-            <label>
-              <strong>Rating: {{hotel.rating}}</strong>
-            </label>
-          </div>
-        </div>
-        <div class="row col-sm-12">
-          <span >{{hotel.address.street}}, {{hotel.address.city}}, {{hotel.address.state}}, {{hotel.address.country}}</span>
-        </div>
-        <div class="row col-sm-8">
-          <button class="btn btn-success" (click) = "onClickMap(hotel.location)" >SHOW ON MAP</button>
-        </div>
-  
-        <div class="row wrapperInner col-sm-12">
-          <p>
-            {{hotel.description}}
-          </p>
-        </div>
-        <br>
-        <div class="row">
-          <div class="col-sm-8 "></div>
-          <div class="col-sm-4 ">
-            <button class="btn btn-primary" style="float:right; margin-right:30px" (click) = "onShowRoom(hotel.location)"> SHOW ROOM</button>
-          </div>
-          <hr />
-          <div *ngIf = "room">
-              <p>this place is for room details</p>
-          </div>
-        </div>
-      </div>
-      <div>
-      </div>
-    </div>
-  </div>
-  </div>  -->
+
 
   <div class="outMost" id="hotelList" *ngIf ="hotels" >
     <div class="row wrapper" *ngFor="let hotel of hotels">
@@ -106,12 +51,9 @@
         </div>
         <div class="row rowThree col-xs-12">
             <div class="col-md-8">
-          <!-- <button class=" showMap btn btn-primary"> SHOW ON MAP</button> -->
           <button class="btn btn-success" (click) = "onClickMap(hotel.location)" >SHOW ON MAP</button>
           </div>
           <div class="col-md-4">
-              <!-- <button class="btn btn-primary" (click)="showRoom(hotel.room)"> ROOMS</button> -->
-              <!-- <button class="btn btn-primary" (click) ="onClickShowRoom()"> ROOMS</button> -->
             </div>
         </div>
         <div class="rowFour col-xs-12">
@@ -129,14 +71,12 @@
             <!--Div for room details -->
                  <div> 
                 <hr>
-                <!-- <table class="table table-hover roomDetails" *ngIf="rooms.length!=0"> -->
                     <table class="table table-hover roomDetails" *ngIf="hotel.room.length!=0">
                   <thead>
                     <tr>
                       
                       <th>Types of Room</th>
                       <th>Rooms Available</th>
-                      <!-- <th>Capacity</th> -->
                       <th>Price ($)</th>
                       <th>Confirm</th>
                     </tr>
@@ -145,10 +85,8 @@
                     <tr *ngFor="let rm of hotel.room">
                       <td>{{rm.roomType}}</td>
                       <td>{{rm.quantity}}</td>
-                      <!-- <td>{{rm.capacity}}</td> -->
                       <td>{{rm.price}}</td>
                       <td>
-                        <!-- <button class="btn btn-primary" [routerLink]="[rm.roomType,hotel.name]">RESERVE</button> -->
                         <button class="btn btn-primary" [routerLink]="[rm.roomType,rm.price,hotel.name]">RESERVE</button>
                       </td>
                     </tr>
@@ -161,10 +99,12 @@
         
         
     </div>
-  
-  
-  
-  
-   
-  
+  </div>
+ 
+  <div hidden *ngIf ="!hotels">
+    <div class="noHotels">
+      <br>
+      <p> No Hotels Found On This Location</p>
+      <br>
+    </div>
   </div>

@@ -39,10 +39,4 @@ router.post('/city', (req, res, next) => {
         }
     });
 });
-
-// Handle default
-router.get('*', (req, res, next) => {
-    res.sendFile(path.join(__dirname, 'client/index.html'));
-});
-
 module.exports = router;

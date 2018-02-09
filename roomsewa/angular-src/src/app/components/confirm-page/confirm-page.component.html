@@ -1,4 +1,5 @@
-<div class="wholeDiv wrapper">
+<div id="print-section">
+  <div class="wholeDiv wrapper">
 
   <h1>{{hotelName | uppercase}}</h1>
   <h5> You have got a great room at ${{roomPrice}}</h5>
@@ -10,13 +11,13 @@
     <hr>
     <div class="row">
       <div class="column col-sm-8">
-       You are Booking: <strong>{{roomType}} </strong>
+        You are Booking:
+        <strong>{{roomType}} </strong>
       </div>
       <div class="column col-sm-4">
-        <button class="btn btn-primary bookBtn" [routerLink]="[roomType,roomPrice]"> CONFIRM </button>
+        <button class="btn btn-primary bookBtn" [routerLink]="[roomType,roomPrice]">CONFIRM</button>
+        <button class="btn btn-primary bookBtn" (click)="onBackClick()">CANCEL</button>
       </div>
     </div>
   </div>
-</div>
-
-<button class="btn btn-primary bookBtn" [routerLink]="['']"> BACK </button>
+</div></div>

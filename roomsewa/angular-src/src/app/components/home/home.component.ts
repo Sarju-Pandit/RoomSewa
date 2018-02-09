@@ -24,16 +24,19 @@ export class HomeComponent implements OnInit {
 
   // calls getHotel() method on authService to fetch the list of hotels from server
   onFindSubmit() {
-
-    let loc ={
+    this.hotels = null;
+    let loc = {
       place: this.place
     };
 
     this.hotelService.getHotel(loc).subscribe((data) => {
       if (data) {
-        console.log('data',data);
         this.hotels = data;
-        this.flashMessage.show('Oops! No hotels found on this location!', { cssClass: 'alert-danger' });
+        if(data.length==0)
+        {
+          this.flashMessage.show('Oops! No hotels found on this location!', { cssClass: 'alert-danger' });
+        } 
+       
       } else {
         this.flashMessage.show('Oops! No hotels found on this location!', { cssClass: 'alert-danger' });
       }
